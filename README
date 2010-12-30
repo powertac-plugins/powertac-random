@@ -1,0 +1,3 @@
+PowerTAC (powertac.org) plugin that provides random seed to other plugins and
+stores all seed values in the database so that a later replay of competitions
+with exactly the same seed values is possible.
