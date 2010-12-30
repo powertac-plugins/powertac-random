@@ -10,14 +10,12 @@ class PowertacRandomGrailsPlugin {
       "grails-app/views/error.gsp"
   ]
 
-  // TODO Fill in these fields
   def author = "Carsten Block"
   def authorEmail = "powertac@carstenblock.org"
-  def title = "Provides SeedType seed data for powertac competition."
+  def title = "Provides random seed data for powertac competition."
   def description = '''\\
-This plugin provides SeedType seed data for powertac competition classes relying on Java'S SecureRandom algorithm for generating SeedType data. With the property "replay= {true|false}" in Config.groovy one can control if new SeedType data is generated or previously generated SeedType data is re-used.
+This plugin provides SeedType random seed data for powertac competition classes relying on Java's SecureRandom algorithm for generating random data. The pluigin exposes a RandomSeedService that posesses a 'replayCompetitionId' property. While this property is null. New random data is generated upon each request and each generated seed value is stored in the database. If replayCompetitionId is set, the RandSeedService tries to serve previously stored seed values for the given competition and only generates (and stores) new random values if database lookup fails.
 '''
-
   // URL to the plugin's documentation
   def documentation = "http://powertac.org/plugin/powertac-SeedType"
 
