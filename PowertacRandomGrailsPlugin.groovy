@@ -1,4 +1,5 @@
 class PowertacRandomGrailsPlugin {
+  def groupId = 'org.powertac.plugins'
   // the plugin version
   def version = "0.1"
   // the version or versions of Grails the plugin is designed for
