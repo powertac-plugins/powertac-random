@@ -188,19 +188,19 @@ class RandomSeedServiceTests extends GroovyTestCase {
 
     randomSeedService.replayCompetitionId = null
     assertNull(randomSeedService.replayCompetitionId)
-    long instance1 = randomSeedService.nextBoolean(competitionId, requesterClass, requesterId, purpose)
+    boolean instance1 = randomSeedService.nextBoolean(competitionId, requesterClass, requesterId, purpose)
     assertNotNull(instance1)
 
-    long instance2 = randomSeedService.nextBoolean(competitionId, requesterClass, null, purpose)
+    boolean instance2 = randomSeedService.nextBoolean(competitionId, requesterClass, null, purpose)
     assertNotNull(instance2)
 
     randomSeedService.replayCompetitionId = competitionId
 
-    long instance3 = randomSeedService.nextBoolean(competitionId, requesterClass, null, purpose)
-    long instance4 = randomSeedService.nextBoolean(competitionId, requesterClass, null, purpose)
-    long instance5 = randomSeedService.nextBoolean(competitionId, requesterClass, null, purpose)
-    long instance6 = randomSeedService.nextBoolean(competitionId, requesterClass, null, purpose)
-    long instance7 = randomSeedService.nextBoolean(competitionId, requesterClass, null, purpose)
+    boolean instance3 = randomSeedService.nextBoolean(competitionId, requesterClass, null, purpose)
+    boolean instance4 = randomSeedService.nextBoolean(competitionId, requesterClass, null, purpose)
+    boolean instance5 = randomSeedService.nextBoolean(competitionId, requesterClass, null, purpose)
+    boolean instance6 = randomSeedService.nextBoolean(competitionId, requesterClass, null, purpose)
+    boolean instance7 = randomSeedService.nextBoolean(competitionId, requesterClass, null, purpose)
     assertTrue (instance3 == instance4 == instance5 == instance6 == instance7)
   }
 
