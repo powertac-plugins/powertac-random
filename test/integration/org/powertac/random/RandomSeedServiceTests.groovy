@@ -201,7 +201,10 @@ class RandomSeedServiceTests extends GroovyTestCase {
     boolean instance5 = randomSeedService.nextBoolean(competitionId, requesterClass, null, purpose)
     boolean instance6 = randomSeedService.nextBoolean(competitionId, requesterClass, null, purpose)
     boolean instance7 = randomSeedService.nextBoolean(competitionId, requesterClass, null, purpose)
-    assertTrue (instance3 == instance4 == instance5 == instance6 == instance7)
+    assertTrue (instance3 == instance4)
+    assertTrue (instance4 == instance5)
+    assertTrue (instance5 == instance6)
+    assertTrue (instance6 == instance7)
   }
 
 
