@@ -57,7 +57,7 @@ class RandomSeedService {
   static def random = new SecureRandom()
   static boolean replay = false
 
-  long nextSeed (requesterClass, requesterId, purpose)
+  long nextSeed (String requesterClass, String requesterId, String purpose)
   {
     assert (requesterClass)
     assert (purpose)
@@ -79,6 +79,10 @@ class RandomSeedService {
       if (!randomSeed) {
         log.error("PowerTAC random service in replay mode but no seed found in db for requesterId: '$requesterId', purpose: '$purpose'. Generating new seed...")
         randomSeed = new RandomSeed(requesterClass: requesterClass, requesterId: requesterId, purpose: purpose, value: randomValue.toString())
+        if (!randomSeed.validate()) {
+          log.error "failed to validate randomSeed"
+          randomSeed.errors.allErrors.each { log.error it.toString() }
+        }
         assert (randomSeed.validate() && randomSeed.save())
       } 
       else {
@@ -88,6 +92,10 @@ class RandomSeedService {
     else {
       if (!randomSeed) {
         randomSeed = new RandomSeed(requesterClass: requesterClass, requesterId: requesterId, purpose: purpose, value: randomValue)
+        if (!randomSeed.validate()) {
+          log.error "failed to validate randomSeed"
+          randomSeed.errors.allErrors.each { log.error it.toString() }
+        }
         assert (randomSeed.validate() && randomSeed.save())
       } 
       else {
