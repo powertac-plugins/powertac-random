@@ -99,7 +99,7 @@ class RandomSeedService {
         assert (randomSeed.validate() && randomSeed.save())
       } 
       else {
-        if (log.isInfoEnabled()) log.info("Overwriting random seed '${randomSeed.value}' for requesterId: '$requesterId', purpose: '$purpose', seedType: '${seedType}' with '${randomValue}'")
+        log.info("Overwriting random seed '${randomSeed.value}' for requesterId: '$requesterId', purpose: '$purpose', with '${randomValue}'")
         randomSeed.value = randomValue
         assert (randomSeed.validate() && randomSeed.save())
       }
